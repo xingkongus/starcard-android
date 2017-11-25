@@ -1,6 +1,5 @@
 package us.xingkong.xingcard.moudle.sampleFragment;
 
-
 import us.xingkong.xingcard.base.BasePresenterImpl;
 
 /**
