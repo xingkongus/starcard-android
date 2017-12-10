@@ -1,23 +1,24 @@
 package us.xingkong.xingcard.data;
 
-import rx.Observable;
+
+import io.reactivex.Observable;
 import us.xingkong.xingcard.bean.Contacts;
-import us.xingkong.xingcard.net.ApiClient;
-import us.xingkong.xingcard.net.ContactsService;
+import us.xingkong.xingcard.net.NetWork;
+import us.xingkong.xingcard.net.ContactsApi;
 
 /**
  * @author hugeterry(http://hugeterry.cn)
  */
 
 public class ContactsRepository implements ContactsSource {
-    private final ContactsService mContactsService;
+    private final ContactsApi mContactsApi;
 
     public ContactsRepository() {
-        mContactsService = ApiClient.getInstance().getRealSService();
+        mContactsApi = NetWork.getInstance().getDataService();
     }
 
     @Override
     public Observable<Contacts> getDataResults(String key, String name) {
-        return mContactsService.getDataResults(key, name);
+        return mContactsApi.getDataResults(key, name);
     }
 }

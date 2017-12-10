@@ -4,7 +4,9 @@ import java.util.List;
 
 import xingkong.us.expandablerecycleradapter.model.ExpandableListItem;
 
-
+/**
+ * @author hugeterry(http://hugeterry.cn)
+ */
 
 public class ExpandGroup implements ExpandableListItem {
 

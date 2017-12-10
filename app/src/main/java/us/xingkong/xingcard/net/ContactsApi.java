@@ -1,16 +1,17 @@
 package us.xingkong.xingcard.net;
 
+import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
-import rx.Observable;
+
 import us.xingkong.xingcard.bean.Contacts;
 
 /**
  * @author hugeterry(http://hugeterry.cn)
  */
 
-public interface ContactsService {
+public interface ContactsApi {
     @FormUrlEncoded
     @POST("index.php/User/loginAPP")
     Observable<Contacts> getDataResults(

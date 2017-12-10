@@ -29,7 +29,7 @@ public class ContactsActivity extends BaseActivity<ContactsContract.Presenter> i
 
     @Override
     protected void prepareData() {
-        mPresenter.getContactsList(" ");
+        mPresenter.getContactsList("xingkongus");
         //TODO:准备数据 比如：从数据库加载数据，或者网络请求数据等等
     }
 

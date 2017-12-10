@@ -13,6 +13,6 @@ public class LogUtils {
      * @param msg
      */
     public static void $Log(String msg) {
-        Log.d("JueQian TAG", msg);
+        Log.d("XingCard TAG", msg);
     }
 }

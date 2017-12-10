@@ -1,6 +1,6 @@
 package us.xingkong.xingcard.data;
 
-import rx.Observable;
+import io.reactivex.Observable;
 import us.xingkong.xingcard.bean.Contacts;
 
 /**
