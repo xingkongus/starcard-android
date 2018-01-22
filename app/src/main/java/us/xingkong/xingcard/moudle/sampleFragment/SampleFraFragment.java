@@ -19,7 +19,7 @@ public class SampleFraFragment extends BaseFragment<SampleFraContract.Presenter>
 
     @Override
     protected int bindLayout() {
-        return R.layout.fragment_show;
+        return R.layout.fragment_more;
     }
 
     @Override

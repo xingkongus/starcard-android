@@ -1,0 +1,5 @@
+<resources>
+    <style name="ItemBackground">
+        <item name="android:background">@drawable/ripple_my_item</item>
+    </style>
+</resources>
