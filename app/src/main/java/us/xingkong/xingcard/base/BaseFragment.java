@@ -27,7 +27,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment
         implements BaseView<P> {
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    public Toolbar mToolbar;
 
     private Unbinder mUnbinder;
     protected P mPresenter;

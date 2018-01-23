@@ -36,6 +36,10 @@ public class DataCache {
         return INSTANCE;
     }
 
+    public boolean hasDataCache() {
+        return dataFile.exists();
+    }
+
     public Contacts readDatas() {
         // Hard code adding some delay, to distinguish reading from memory and reading disk clearly
         try {
@@ -46,7 +50,8 @@ public class DataCache {
 
         try {
             Reader reader = new FileReader(dataFile);
-            return gson.fromJson(reader, new TypeToken<Contacts>(){}.getType());
+            return gson.fromJson(reader, new TypeToken<Contacts>() {
+            }.getType());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return null;

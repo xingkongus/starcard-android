@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDelegate;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -17,10 +19,14 @@ import java.util.List;
 import butterknife.BindArray;
 import butterknife.BindView;
 import us.xingkong.xingcard.R;
+import us.xingkong.xingcard.XingCardAPP;
 import us.xingkong.xingcard.adapter.MainPagerAdapter;
 import us.xingkong.xingcard.base.BaseActivity;
+import us.xingkong.xingcard.base.Constants;
 import us.xingkong.xingcard.moudle.contacts.ContractsFraFragment;
 import us.xingkong.xingcard.moudle.more.MoreFraFragment;
+import us.xingkong.xingcard.utils.SPUtils;
+import us.xingkong.xingcard.utils.StatusBarUtils;
 
 import static us.xingkong.xingcard.base.Constants.STAR_ID;
 
@@ -58,6 +64,12 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     protected void prepareData() {
         Intent intent = getIntent();
         mStarIDString = intent.getStringExtra(STAR_ID);
+        if (TextUtils.isEmpty(mStarIDString)) {
+            mStarIDString = (String) SPUtils.get(XingCardAPP.getAppContext(),
+                    Constants.KEY_LOGIN_NAME,
+                    "");
+        }
+
     }
 
     @Override
@@ -84,6 +96,14 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         mBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
+                Log.i("hugeterry", "onTabSelected: " + position);
+                if (position == 0) {
+                    StatusBarUtils.setWindowStatusBarColor(MainActivity.this,
+                            R.color.colorPrimaryDark);
+                } else if (position == 1) {
+                    StatusBarUtils.setWindowStatusBarColor(MainActivity.this,
+                            R.color.colorGreenDrak);
+                }
                 mViewPager.setCurrentItem(position, false);
                 return true;
             }

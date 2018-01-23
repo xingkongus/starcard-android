@@ -42,6 +42,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     protected void initView() {
+        mEditText.setText("xingkongus");
 
     }
 

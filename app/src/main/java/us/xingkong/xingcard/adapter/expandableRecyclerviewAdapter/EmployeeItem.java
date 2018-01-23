@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import us.xingkong.xingcard.R;
 import us.xingkong.xingcard.bean.Employee;
+import us.xingkong.xingcard.data.TellNumController;
 import xingkong.us.expandablerecycleradapter.viewholder.AbstractAdapterItem;
 
 /**
@@ -53,10 +54,13 @@ public class EmployeeItem extends AbstractAdapterItem {
     @Override
     public void onUpdateViews(Object model, int position) {
         if (model instanceof Employee) {
-            Log.i("hugeterry", "onUpdateViews: gooooooooooo");
             employee = (Employee) model;
             mNameTV.setText(employee.username);
-            mTelTV.setText(employee.tel);
+            if (TellNumController.getController().getmTellType() == TellNumController.SHORT_TELL_NUM) {
+                mTelTV.setText(employee.tel);
+            } else {
+                mTelTV.setText(employee.phone);
+            }
         }
     }
 }

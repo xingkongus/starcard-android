@@ -10,4 +10,7 @@ public class Constants {
     public static final String STATE_CODE = "80805012";
 
     public static final String STAR_ID = "starid";
+
+    //SP KEY
+    public static final String KEY_LOGIN_NAME = "loginname";
 }

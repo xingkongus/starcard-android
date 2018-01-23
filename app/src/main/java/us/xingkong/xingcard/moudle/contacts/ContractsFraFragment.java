@@ -6,20 +6,26 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.SearchView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnItemSelected;
 import us.xingkong.xingcard.R;
 import us.xingkong.xingcard.adapter.expandableRecyclerviewAdapter.ImpExpandableAdapter;
 import us.xingkong.xingcard.base.BaseFragment;
 import us.xingkong.xingcard.bean.Contacts;
+import us.xingkong.xingcard.bean.Employee;
 import us.xingkong.xingcard.bean.ExpandGroup;
+import us.xingkong.xingcard.data.TellNumController;
 import us.xingkong.xingcard.utils.SearchUtils;
 import xingkong.us.expandablerecycleradapter.adapter.BaseExpandableAdapter;
 
+import static android.content.ContentValues.TAG;
 import static us.xingkong.xingcard.base.Constants.STAR_ID;
 
 /**
@@ -29,6 +35,8 @@ public class ContractsFraFragment extends BaseFragment<ContractsFraContract.Pres
 
     @BindView(R.id.sv_contracts)
     SearchView mSearchView;
+    @BindView(R.id.spinner)
+    Spinner mSpinner;
     @BindView(R.id.rv_contracts)
     RecyclerView mRecyclerView;
 
@@ -52,8 +60,7 @@ public class ContractsFraFragment extends BaseFragment<ContractsFraContract.Pres
         Bundle bundle = getArguments();
 
         mStarIDString = bundle.getString(STAR_ID);
-        Log.i("hugeterry", "prepareData: " + mStarIDString);
-        if (mStarIDString != null) {
+        if (!TextUtils.isEmpty(mStarIDString)) {
             mPresenter.getContactsList(mStarIDString);
         }
     }
@@ -61,6 +68,8 @@ public class ContractsFraFragment extends BaseFragment<ContractsFraContract.Pres
     @Override
     protected void initView(View rootView) {
         setToolbarTitle("联系人");
+        mToolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
         mSearchView.clearFocus();
     }
 
@@ -110,5 +119,11 @@ public class ContractsFraFragment extends BaseFragment<ContractsFraContract.Pres
 
             }
         });
+    }
+
+    @OnItemSelected(R.id.spinner)
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        TellNumController.getController().setmTellType(position);
+        mImpExpandableAdapter.notifyDataSetChanged();
     }
 }

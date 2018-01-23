@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="starcardThemeColor">#29ABFF</color>
+    <color name="starcardThemeColor">#007fd1</color>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#0083d7</color>
+    <color name="colorPrimaryDark">#007fd1</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorItemPressed">#8f8f8f</color>
 
-    <color name="colorBlue">#3F51B5</color>
+    <!--<color name="colorBlue">#3F51B5</color>-->
+    <color name="colorBlue">#007fd1</color>
     <color name="colorGreen">#008f68</color>
+    <color name="colorGreenDrak">#016e50</color>
 
     <color name="text_color">#ffffffff</color>
     <color name="text_primary">#ff000000</color>

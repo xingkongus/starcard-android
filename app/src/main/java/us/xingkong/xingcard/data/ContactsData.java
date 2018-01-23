@@ -2,6 +2,7 @@ package us.xingkong.xingcard.data;
 
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -21,6 +22,9 @@ import static us.xingkong.xingcard.base.Constants.CONTACTS_KEY;
 
 /**
  * @author hugeterry(http://hugeterry.cn)
+ *
+ * 没有缓存下，获取网络数据后存储到缓存，再显示ui
+ * 有缓存下，读取缓存数据显示ui后，再加载网络数据并存储到缓存，等待下一次打开时再根据网络状况使用该缓存
  */
 
 public class ContactsData {
@@ -74,7 +78,7 @@ public class ContactsData {
         return XingCardAPP.getAppContext().getString(dataSourceTextRes);
     }
 
-    public void loadFromNetwork() {
+    public void loadFromNetwork(final boolean doSubscribe) {
         NetWork.getInstance().getDataService()
                 .getDataResults(CONTACTS_KEY, groupName)
                 .subscribeOn(Schedulers.io())
@@ -87,13 +91,17 @@ public class ContactsData {
                 .subscribe(new Consumer<Contacts>() {
                     @Override
                     public void accept(Contacts datas) {
-                        cache.onNext(datas);
+                        if (doSubscribe) {
+                            cache.onNext(datas);
+                        }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) {
                         throwable.printStackTrace();
-                        cache.onError(throwable);
+                        if (doSubscribe) {
+                            cache.onError(throwable);
+                        }
                     }
                 });
     }
@@ -107,10 +115,11 @@ public class ContactsData {
                     Contacts datas = DataCache.getInstance().readDatas();
                     if (datas == null) {
                         setDataSource(DATA_SOURCE_NETWORK);
-                        loadFromNetwork();
+                        loadFromNetwork(true);
                     } else {
                         setDataSource(DATA_SOURCE_DISK);
                         e.onNext(datas);
+                        loadFromNetwork(false);
                     }
                 }
             })
