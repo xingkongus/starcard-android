@@ -2,11 +2,14 @@ package us.xingkong.xingcard.moudle.more;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import us.xingkong.baymax.Baymax;
 import us.xingkong.xingcard.R;
 import us.xingkong.xingcard.XingCardAPP;
 import us.xingkong.xingcard.base.BaseFragment;
@@ -20,8 +23,12 @@ import us.xingkong.xingcard.utils.SPUtils;
  */
 public class MoreFraFragment extends BaseFragment<MoreFraContract.Presenter> implements MoreFraContract.View {
 
-    @BindView(R.id.bt_exit)
-    Button mExitButton;
+    @BindView(R.id.tv_name)
+    TextView mNameTextView;
+    @BindView(R.id.rl_robot)
+    RelativeLayout mRobotRL;
+    @BindView(R.id.rl_exit)
+    RelativeLayout mExitRL;
 
     @Override
     protected MoreFraContract.Presenter createPresenter() {
@@ -55,8 +62,13 @@ public class MoreFraFragment extends BaseFragment<MoreFraContract.Presenter> imp
 
     }
 
-    @OnClick(R.id.bt_exit)
-    public void onClick(View view) {
+    @Override
+    public void setData(String string) {
+        mNameTextView.setText("组织：" + string);
+    }
+
+    @OnClick(R.id.rl_exit)
+    public void rlExitOnClick(View view) {
         ContactsData.getInstance().clearMemoryAndDiskCache();
         SPUtils.remove(XingCardAPP.getAppContext(), Constants.KEY_LOGIN_NAME);
 
@@ -65,4 +77,10 @@ public class MoreFraFragment extends BaseFragment<MoreFraContract.Presenter> imp
         getActivity().finish();
     }
 
+    @OnClick(R.id.rl_robot)
+    public void rlRobotOnClick(View view) {
+        //TODO: 星大白目前与星名片基础功能处在独立模块，后期可以考虑用组件化路由去跳转，而不选择intent
+        Intent intent = new Intent(getActivity(), Baymax.class);
+        startActivity(intent);
+    }
 }

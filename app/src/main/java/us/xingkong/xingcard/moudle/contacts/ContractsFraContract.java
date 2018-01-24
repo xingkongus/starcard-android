@@ -12,7 +12,7 @@ import us.xingkong.xingcard.bean.ExpandGroup;
  */
 public interface ContractsFraContract {
     interface View extends BaseView<Presenter> {
-        void initRecyclerView(Contacts contacts);
+        void updateContactsUI(Contacts contacts);
 
     }
 

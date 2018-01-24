@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:name=".XingCardAPP"
@@ -25,6 +27,9 @@
         </activity>
         <activity android:name=".moudle.login.LoginActivity" />
         <activity android:name=".moudle.main.MainActivity" />
+        <activity android:name=".utils.acpUtils.AcpActivity"/>
+
+        <activity android:name="us.xingkong.baymax.Baymax" />
     </application>
 
 </manifest>

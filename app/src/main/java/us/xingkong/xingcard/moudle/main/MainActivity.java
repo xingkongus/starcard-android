@@ -96,7 +96,6 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         mBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
-                Log.i("hugeterry", "onTabSelected: " + position);
                 if (position == 0) {
                     StatusBarUtils.setWindowStatusBarColor(MainActivity.this,
                             R.color.colorPrimaryDark);
@@ -139,4 +138,9 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         mBottomNavigation.setColored(true);
         mBottomNavigation.setTitleState(AHBottomNavigation.TitleState.SHOW_WHEN_ACTIVE);
     }
+
+    public MoreFraFragment getmMoreFraContract() {
+        return mMoreFraContract;
+    }
+
 }

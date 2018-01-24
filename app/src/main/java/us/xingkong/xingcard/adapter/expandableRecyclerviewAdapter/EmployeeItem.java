@@ -1,16 +1,14 @@
 package us.xingkong.xingcard.adapter.expandableRecyclerviewAdapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import us.xingkong.xingcard.R;
 import us.xingkong.xingcard.bean.Employee;
 import us.xingkong.xingcard.data.TellNumController;
+import us.xingkong.xingcard.utils.IntentUtils;
 import xingkong.us.expandablerecycleradapter.viewholder.AbstractAdapterItem;
 
 /**
@@ -40,11 +38,6 @@ public class EmployeeItem extends AbstractAdapterItem {
         mTelTV = (TextView) root.findViewById(R.id.tv_tel);
         mCallIV = (Button) root.findViewById(R.id.bt_call);
         mSmsIV = (Button) root.findViewById(R.id.bt_sms);
-        root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
     }
 
     @Override
@@ -61,6 +54,19 @@ public class EmployeeItem extends AbstractAdapterItem {
             } else {
                 mTelTV.setText(employee.phone);
             }
+
+            mCallIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    IntentUtils.intentToCall(context, mTelTV.getText().toString());
+                }
+            });
+            mSmsIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    IntentUtils.send(context, mTelTV.getText().toString());
+                }
+            });
         }
     }
 }

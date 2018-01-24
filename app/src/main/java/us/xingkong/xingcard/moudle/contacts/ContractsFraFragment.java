@@ -22,6 +22,8 @@ import us.xingkong.xingcard.bean.Contacts;
 import us.xingkong.xingcard.bean.Employee;
 import us.xingkong.xingcard.bean.ExpandGroup;
 import us.xingkong.xingcard.data.TellNumController;
+import us.xingkong.xingcard.moudle.main.MainActivity;
+import us.xingkong.xingcard.moudle.more.MoreFraFragment;
 import us.xingkong.xingcard.utils.SearchUtils;
 import xingkong.us.expandablerecycleradapter.adapter.BaseExpandableAdapter;
 
@@ -102,7 +104,7 @@ public class ContractsFraFragment extends BaseFragment<ContractsFraContract.Pres
         });
     }
 
-    public void initRecyclerView(Contacts contacts) {
+    public void updateContactsUI(Contacts contacts) {
         mExpandGroups.addAll(contacts.getDepartments());
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -119,11 +121,17 @@ public class ContractsFraFragment extends BaseFragment<ContractsFraContract.Pres
 
             }
         });
+
+        MoreFraFragment moreFraFragment = ((MainActivity) getActivity()).getmMoreFraContract();
+        moreFraFragment.setData(contacts.getDepartment_belong());
+
     }
 
     @OnItemSelected(R.id.spinner)
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TellNumController.getController().setmTellType(position);
-        mImpExpandableAdapter.notifyDataSetChanged();
+        if (mImpExpandableAdapter != null) {
+            mImpExpandableAdapter.notifyDataSetChanged();
+        }
     }
 }

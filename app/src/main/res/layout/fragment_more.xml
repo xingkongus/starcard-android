@@ -1,27 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!--TODO: 这儿为了赶时间写的不太好，
+后续可以把每个item写成自定义控件，
+简约代码,解耦,功能也相对独立
+@author hugeterry(hugeterry.cn)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ll_front"
+    <include layout="@layout/view_toolbar" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/ItemBackground"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:clickable="true"
         android:orientation="vertical">
 
-        <include layout="@layout/view_toolbar" />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="@color/colorPrimary"
+            tools:text="组织" />
+
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_robot"
+        style="@style/ItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:clickable="true"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_robot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="今晚先做到这了，累" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:text="星大白"
+            android:textColor="@color/colorPrimary" />
 
-        <Button
-            android:id="@+id/bt_exit"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="退出登录" />
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:src="@drawable/ic_chevron_right_black_24dp" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_exit"
+        style="@style/ItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:clickable="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="退出登录"
+            android:textColor="@color/colorPrimary" />
+
+    </RelativeLayout>
+
+</LinearLayout>
+

@@ -1,1 +1,1 @@
-include ':app', ':expandablerecycleradapter'
+include ':app', ':expandablerecycleradapter', ':baymax'

@@ -7,6 +7,10 @@ import java.util.List;
 import us.xingkong.xingcard.bean.Employee;
 import us.xingkong.xingcard.bean.ExpandGroup;
 
+/**
+ * @author hugeterry(http://hugeterry.cn)
+ */
+
 public class SearchUtils {
     public static List<ExpandGroup> filterData(String filterStr, List<ExpandGroup> mExpandGroups) {
         CharacterParser characterParser = CharacterParser.getInstance();

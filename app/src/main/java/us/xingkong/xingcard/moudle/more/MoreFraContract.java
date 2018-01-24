@@ -8,6 +8,7 @@ import us.xingkong.xingcard.base.BaseView;
  */
 public interface MoreFraContract {
     interface View extends BaseView<Presenter> {
+        void setData(String string);
     }
 
     interface Presenter extends BasePresenter {

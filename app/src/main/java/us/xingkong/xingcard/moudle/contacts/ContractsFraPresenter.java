@@ -31,7 +31,7 @@ public class ContractsFraPresenter extends BasePresenterImpl implements Contract
                 .subscribeData(new Consumer<Contacts>() {
                     @Override
                     public void accept(@NonNull Contacts datas) throws Exception {
-                        mView.initRecyclerView(datas);
+                        mView.updateContactsUI(datas);
                         SPUtils.put(XingCardAPP.getAppContext(),
                                 Constants.KEY_LOGIN_NAME,
                                 name);
