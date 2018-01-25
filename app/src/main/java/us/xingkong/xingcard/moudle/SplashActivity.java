@@ -16,6 +16,9 @@ import us.xingkong.xingcard.moudle.login.LoginActivity;
 import us.xingkong.xingcard.moudle.main.MainActivity;
 import us.xingkong.xingcard.utils.SPUtils;
 
+/**
+ * @author hugeterry(http://hugeterry.cn)
+ */
 
 public class SplashActivity extends AppCompatActivity {
     @Override
@@ -27,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
                 Constants.KEY_LOGIN_NAME,
                 "");
         final boolean hasDataCache = DataCache.getInstance().hasDataCache();
-        Log.i("hugeterry", "hasDataCache:" + hasDataCache + " isLogin:" + isLogin+" "+isLogin.length());
+        Log.i(Constants.TAG, "hasDataCache:" + hasDataCache + " isLogin:" + isLogin+" "+isLogin.length());
 
         new Handler().postDelayed(new Runnable() {
 

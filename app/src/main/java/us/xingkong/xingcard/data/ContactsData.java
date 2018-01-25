@@ -15,6 +15,7 @@ import io.reactivex.subjects.BehaviorSubject;
 
 import us.xingkong.xingcard.R;
 import us.xingkong.xingcard.XingCardAPP;
+import us.xingkong.xingcard.base.Constants;
 import us.xingkong.xingcard.bean.Contacts;
 import us.xingkong.xingcard.net.NetWork;
 
@@ -22,9 +23,9 @@ import static us.xingkong.xingcard.base.Constants.CONTACTS_KEY;
 
 /**
  * @author hugeterry(http://hugeterry.cn)
- *
- * 没有缓存下，获取网络数据后存储到缓存，再显示ui
- * 有缓存下，读取缓存数据显示ui后，再加载网络数据并存储到缓存，等待下一次打开时再根据网络状况使用该缓存
+ *         <p>
+ *         没有缓存下，获取网络数据后存储到缓存，再显示ui
+ *         有缓存下，读取缓存数据显示ui后，再加载网络数据并存储到缓存，等待下一次打开时再根据网络状况使用该缓存
  */
 
 public class ContactsData {
@@ -57,6 +58,7 @@ public class ContactsData {
     }
 
     private void setDataSource(@DataSource int dataSource) {
+        Log.i(Constants.TAG, "setDataSource: " + dataSource);
         this.dataSource = dataSource;
     }
 
@@ -85,6 +87,7 @@ public class ContactsData {
                 .doOnNext(new Consumer<Contacts>() {
                     @Override
                     public void accept(Contacts datas) {
+                        Log.i(Constants.TAG, "accept: " + datas);
                         DataCache.getInstance().writeDatas(datas);
                     }
                 })

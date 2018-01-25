@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDelegate;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -62,6 +61,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
 
     @Override
     protected void prepareData() {
+        //TODO: 上线前加上更新模块
         Intent intent = getIntent();
         mStarIDString = intent.getStringExtra(STAR_ID);
         if (TextUtils.isEmpty(mStarIDString)) {

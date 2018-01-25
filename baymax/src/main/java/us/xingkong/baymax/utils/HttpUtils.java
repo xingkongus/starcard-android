@@ -16,8 +16,7 @@ import us.xingkong.baymax.bean.Result;
 
 /**
  * 发送一个消息，得到返回的消息
- * @author Administrator
- *
+ * @author hugeterry(http://hugeterry.cn)
  */
 public class HttpUtils {
 	private static final String URL = "http://www.tuling123.com/openapi/api";

@@ -12,5 +12,6 @@ public interface MoreFraContract {
     }
 
     interface Presenter extends BasePresenter {
+        void clearData();
     }
 }

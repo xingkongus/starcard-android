@@ -14,9 +14,12 @@ public interface ContractsFraContract {
     interface View extends BaseView<Presenter> {
         void updateContactsUI(Contacts contacts);
 
+        void loadDataFail();
     }
 
     interface Presenter extends BasePresenter {
         void getContactsList(String name);
+
+        void clearData();
     }
 }

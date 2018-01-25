@@ -1,9 +1,3 @@
-/*
- * Filename	CharacterParser.java
- * Company	上海乐问-浦东分公司。
- * @author	LuRuihui
- * @version	0.1
- */
 package us.xingkong.xingcard.utils;
 
 /**

@@ -1,5 +1,8 @@
 package us.xingkong.xingcard.moudle.contacts;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +25,7 @@ import us.xingkong.xingcard.bean.Contacts;
 import us.xingkong.xingcard.bean.Employee;
 import us.xingkong.xingcard.bean.ExpandGroup;
 import us.xingkong.xingcard.data.TellNumController;
+import us.xingkong.xingcard.moudle.login.LoginActivity;
 import us.xingkong.xingcard.moudle.main.MainActivity;
 import us.xingkong.xingcard.moudle.more.MoreFraFragment;
 import us.xingkong.xingcard.utils.SearchUtils;
@@ -125,6 +129,19 @@ public class ContractsFraFragment extends BaseFragment<ContractsFraContract.Pres
         MoreFraFragment moreFraFragment = ((MainActivity) getActivity()).getmMoreFraContract();
         moreFraFragment.setData(contacts.getDepartment_belong());
 
+    }
+
+    public void loadDataFail() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.login_fail);
+        builder.setMessage(R.string.re_login);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                getActivity().startActivity(intent);
+            }
+        }).create().show();
     }
 
     @OnItemSelected(R.id.spinner)

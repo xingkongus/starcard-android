@@ -42,8 +42,6 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     protected void initView() {
-        mEditText.setText("xingkongus");
-
     }
 
     @Override
@@ -59,5 +57,6 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra(STAR_ID, mEditText.getText().toString());
         startActivity(intent);
+        this.finish();
     }
 }

@@ -69,8 +69,7 @@ public class MoreFraFragment extends BaseFragment<MoreFraContract.Presenter> imp
 
     @OnClick(R.id.rl_exit)
     public void rlExitOnClick(View view) {
-        ContactsData.getInstance().clearMemoryAndDiskCache();
-        SPUtils.remove(XingCardAPP.getAppContext(), Constants.KEY_LOGIN_NAME);
+        mPresenter.clearData();
 
         Intent intent = new Intent(getActivity(), LoginActivity.class);
         startActivity(intent);

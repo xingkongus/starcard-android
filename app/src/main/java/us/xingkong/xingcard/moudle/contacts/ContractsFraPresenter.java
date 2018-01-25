@@ -39,9 +39,17 @@ public class ContractsFraPresenter extends BasePresenterImpl implements Contract
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(@NonNull Throwable throwable) throws Exception {
+                        Log.i(Constants.TAG, "fail load data");
+                        mView.loadDataFail();
+                        clearData();
                         throwable.printStackTrace();
-                        Log.i("hugeterry", "fail!");
                     }
                 });
+    }
+
+    @Override
+    public void clearData() {
+        ContactsData.getInstance().clearMemoryAndDiskCache();
+        SPUtils.remove(XingCardAPP.getAppContext(), Constants.KEY_LOGIN_NAME);
     }
 }
