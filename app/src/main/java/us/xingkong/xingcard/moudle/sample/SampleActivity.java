@@ -9,6 +9,7 @@ import us.xingkong.xingcard.base.BaseActivity;
 
 /**
  * @author hugeterry(http://hugeterry.cn)
+ * 这只是mvp的例子，做其他界面可以再这个基础上根据提示写功能
  */
 public class SampleActivity extends BaseActivity<SampleContract.Presenter> implements SampleContract.View {
 

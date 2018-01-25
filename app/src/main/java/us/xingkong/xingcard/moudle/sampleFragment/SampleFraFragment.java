@@ -8,6 +8,7 @@ import us.xingkong.xingcard.base.BaseFragment;
 
 /**
  * @author hugeterry(http://hugeterry.cn)
+ * 这只是mvp的例子，做其他界面可以再这个基础上根据提示写功能
  */
 public class SampleFraFragment extends BaseFragment<SampleFraContract.Presenter> implements SampleFraContract.View {
 
